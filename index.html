@@ -40,8 +40,6 @@
 
         html {
             scroll-behavior: smooth;
-            overflow-x: hidden;
-            width: 100vw;
         }
 
         body {
@@ -1048,63 +1046,204 @@
            RESPONSIVE DESIGN
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         @media (max-width: 968px) {
-            .hero-left h1 { font-size: 2.5rem; }
-            .typewriter-container { font-size: 1.2rem; }
-            .hologram-container { height: 300px; max-width: 300px; margin: 0 auto; }
+            .hero-left h1 {
+                font-size: 2.5rem;
+            }
+
+            .typewriter-container {
+                font-size: 1.2rem;
+            }
+
+            .hologram-container {
+                height: 300px;
+                max-width: 300px;
+                margin: 0 auto;
+            }
         }
 
         @media (max-width: 768px) {
-            .nav-links { position: fixed; top: -100vh; left: 0; width: 100%; height: 100vh; background: rgba(10, 15, 30, 0.98); flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; gap: 2rem; }
-            .nav-links.active { top: 0; }
-            .nav-links a { font-size: 1.5rem; }
-            .hamburger { display: flex; cursor: pointer; }
-            .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-            
-            section { padding: 3rem 5%; overflow-x: hidden; }
-            
-            .marquee-item { font-size: 0.9rem; margin: 0 1rem; }
-            .marquee-item::after { margin-left: 2rem; }
+            .nav-links {
+                position: fixed;
+                top: -100vh;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 15, 30, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                top: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .hamburger {
+                display: flex;
+                cursor: pointer;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            section {
+                padding: 3rem 5%;
+                overflow-x: hidden;
+            }
+
+            .marquee-item {
+                font-size: 0.9rem;
+                margin: 0 1rem;
+            }
+
+            .marquee-item::after {
+                margin-left: 2rem;
+            }
 
             /* HERO - Stacked but graphic aligned right */
-            .hero-content { flex-direction: column; align-items: flex-start; text-align: left; gap: 2rem; margin-top: 5rem; width: 100%; overflow: hidden; }
-            .hero-left { width: 100%; }
-            .hero-right { align-self: flex-end; width: 100%; display: flex; justify-content: flex-end; }
-            .cta-group { justify-content: flex-start; width: 100%; }
-            .hologram-container { height: 250px; max-width: 250px; margin: 0; }
-            .hologram-screen { height: 150px; padding: 1rem; }
+            .hero-content {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                gap: 2rem;
+                margin-top: 5rem;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .hero-left {
+                width: 100%;
+            }
+
+            .hero-right {
+                align-self: flex-end;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .cta-group {
+                justify-content: flex-start;
+                width: 100%;
+            }
+
+            .hologram-container {
+                height: 250px;
+                max-width: 250px;
+                margin: 0;
+            }
+
+            .hologram-screen {
+                height: 150px;
+                padding: 1rem;
+            }
 
             /* SERVICES - Stacked natively */
-            .services-grid { grid-template-columns: 1fr !important; gap: 1.5rem; width: 100%; }
-            .service-card { padding: 1.5rem; }
+            .services-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+                width: 100%;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
 
             /* CONTACT - Stacked natively */
-            .contact-container { flex-direction: column !important; gap: 2rem; width: 100%; overflow: hidden; }
-            .contact-right { width: 100%; }
-            .contact-left { width: 100%; }
+            .contact-container {
+                flex-direction: column !important;
+                gap: 2rem;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .contact-right {
+                width: 100%;
+            }
+
+            .contact-left {
+                width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
-            .hero-left h1 { font-size: 1.8rem; }
-            .typewriter-container { font-size: 1rem; }
-            .cta-group { flex-direction: column; }
-            .cta-group .btn { width: 100%; text-align: center; }
-            
-            .hologram-container { height: 180px; max-width: 180px; }
-            .hologram-screen { height: 120px; }
-            
-            .code-content { font-size: 0.5rem; }
-            .section-title { font-size: 1.8rem; }
-            
-            /* STATS - Single line scaled heavily to fit */
-            .stats-grid { flex-wrap: nowrap; gap: 0; padding: 0; justify-content: space-between; overflow-x: hidden; width: 100%; }
-            .stat-number { font-size: 1.1rem; }
-            .stat-label { font-size: 0.45rem; letter-spacing: 0; }
-            .stat-label::after { width: 10px; bottom: -3px; }
-            .stat-item { padding: 0 0.1rem; }
-        }
+            .hero-left h1 {
+                font-size: 1.8rem;
+            }
 
+            .typewriter-container {
+                font-size: 1rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .cta-group .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hologram-container {
+                height: 180px;
+                max-width: 180px;
+            }
+
+            .hologram-screen {
+                height: 120px;
+            }
+
+            .code-content {
+                font-size: 0.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            /* STATS - Single line scaled heavily to fit */
+            .stats-grid {
+                flex-wrap: nowrap;
+                gap: 0;
+                padding: 0;
+                justify-content: space-between;
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            .stat-number {
+                font-size: 1.1rem;
+            }
+
+            .stat-label {
+                font-size: 0.45rem;
+                letter-spacing: 0;
+            }
+
+            .stat-label::after {
+                width: 10px;
+                bottom: -3px;
+            }
+
+            .stat-item {
+                padding: 0 0.1rem;
+            }
+        }
     </style>
 </head>
 
