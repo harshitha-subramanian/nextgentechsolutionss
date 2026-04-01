@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextgenTech Solutions</title>
+    <meta name="description"
+        content="NextgenTech Solutions - Premium Tech Agency. We build websites, mobile apps, ML projects, and data analysis solutions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Syne:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --olive-light: #A3B56A;
+            --olive: #8B9E50;
+            --olive-dark: #6B7C3F;
+            --white: #F5F5F0;
+            --navy: #0A0F1E;
+            --navy-light: #121A2F;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+
+            /* Fonts */
+            --font-heading: 'Syne', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           RESET & GLOBAL
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100vw;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--navy);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           PRELOADER
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background-color: var(--navy);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .spinner-ring {
+            width: 60px;
+            height: 60px;
+            border: 3px solid transparent;
+            border-top-color: var(--olive-light);
+            border-right-color: var(--olive);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 20px rgba(139, 158, 80, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        #preloader h2 {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+            background: linear-gradient(90deg, var(--white), var(--olive-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           NAVBAR
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--olive-dark), var(--olive-light));
+            width: 0%;
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(10, 15, 30, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo .dot {
+            color: var(--olive-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--olive-light);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--olive-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 1002;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 2px;
+            background-color: var(--white);
+            transition: 0.3s;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           HERO SECTION
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            background: radial-gradient(circle at 70% 50%, rgba(139, 158, 80, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 30% 80%, rgba(139, 158, 80, 0.05) 0%, transparent 40%);
+        }
+
+        /* Animated Mesh Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 40px;
+            }
+        }
+
+        .hero-content {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            z-index: 1;
+            margin-top: 5rem;
+        }
+
+        .hero-left {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-left h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #acc27a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typewriter-container {
+            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            color: var(--olive-light);
+            margin-bottom: 2.5rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: var(--olive-light);
+            margin-left: 5px;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--olive-dark), var(--olive));
+            color: var(--white);
+            border: 1px solid var(--olive-light);
+            box-shadow: 0 0 15px rgba(139, 158, 80, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Magnetic hover & Olive ripple effect setup via JS */
+        .btn::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            pointer-events: none;
+            z-index: -1;
+            transition: transform 0.6s ease;
+        }
+
+        .btn.ripple-active::after {
+            transform: translate(-50%, -50%) scale(3);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.95) !important;
+            box-shadow: 0 0 5px rgba(139, 158, 80, 0.5);
+        }
+
+        /* Hero Right - Holographic Screen */
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hologram-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .hologram-screen {
+            width: 100%;
+            height: 300px;
+            background: rgba(10, 15, 30, 0.6);
+            border: 1px solid var(--olive-light);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(139, 158, 80, 0.15),
+                inset 0 0 20px rgba(139, 158, 80, 0.1);
+            position: relative;
+            overflow: hidden;
+            animation: borderPulse 4s ease-in-out infinite, floatScreen 6s ease-in-out infinite;
+            transform-style: preserve-3d;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes borderPulse {
+
+            0%,
+            100% {
+                border-color: rgba(163, 181, 106, 0.4);
+                box-shadow: 0 0 20px rgba(139, 158, 80, 0.1);
+            }
+
+            50% {
+                border-color: rgba(163, 181, 106, 1);
+                box-shadow: 0 0 40px rgba(139, 158, 80, 0.3), inset 0 0 30px rgba(139, 158, 80, 0.2);
+            }
+        }
+
+        .screen-header {
+            height: 30px;
+            background: rgba(139, 158, 80, 0.1);
+            border-bottom: 1px solid rgba(163, 181, 106, 0.3);
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 8px;
+        }
+
+        .screen-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .screen-dot:nth-child(1) {
+            background: #ff5f56;
+        }
+
+        .screen-dot:nth-child(2) {
+            background: #ffbd2e;
+        }
+
+        .screen-dot:nth-child(3) {
+            background: #27c93f;
+        }
+
+        .code-scroll {
+            padding: 15px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--olive-light);
+            line-height: 1.8;
+            height: 100%;
+            position: relative;
+        }
+
+        .code-content {
+            position: absolute;
+            bottom: -100%;
+            animation: codeScrollUp 15s linear infinite;
+        }
+
+        .code-line {
+            margin: 2px 0;
+            opacity: 0.8;
+        }
+
+        .c-keyword {
+            color: #c678dd;
+        }
+
+        .c-string {
+            color: #98c379;
+        }
+
+        .c-func {
+            color: #61afef;
+        }
+
+        .c-comment {
+            color: #5c6370;
+        }
+
+        @keyframes codeScrollUp {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        @keyframes floatScreen {
+
+            0%,
+            100% {
+                transform: translateY(0) rotateX(5deg) rotateY(-5deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotateX(8deg) rotateY(-2deg);
+            }
+        }
+
+        .hologram-base {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) rotateX(70deg);
+            width: 80%;
+            height: 100px;
+            background: radial-gradient(ellipse, rgba(139, 158, 80, 0.2) 0%, transparent 70%);
+            border: 1px solid rgba(163, 181, 106, 0.3);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(139, 158, 80, 0.3);
+            animation: pulseBase 3s ease-in-out infinite, rippleBase 6s infinite;
+        }
+
+        @keyframes pulseBase {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translateX(-50%) rotateX(70deg) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) rotateX(70deg) scale(1.05);
+            }
+        }
+
+        @keyframes rippleBase {
+            0% {
+                box-shadow: 0 0 0 0 rgba(139, 158, 80, 0.4);
+            }
+
+            100% {
+                box-shadow: 0 0 40px 20px rgba(139, 158, 80, 0);
+            }
+        }
+
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--olive-light);
+            border-radius: 50%;
+            box-shadow: 0 0 5px var(--olive-light);
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            80% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           SECTION STYLES & ANIMATIONS
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        section {
+            padding: 6rem 5%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 0 auto 4rem auto;
+            position: relative;
+            display: table;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--olive-light);
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            will-change: transform, opacity;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           MARQUEE SECTION
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .marquee-section {
+            background-color: var(--navy-light);
+            padding: 1.5rem 0;
+            overflow: hidden;
+            border-top: 1px solid rgba(139, 158, 80, 0.2);
+            border-bottom: 1px solid rgba(139, 158, 80, 0.2);
+            position: relative;
+            z-index: 5;
+            width: 100%;
+        }
+
+        .marquee-content {
+            display: flex;
+            width: max-content;
+            animation: scrollText 20s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--olive-light);
+            margin: 0 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee-item::after {
+            content: '✦';
+            color: var(--white);
+            opacity: 0.3;
+            margin-left: 4rem;
+            font-size: 1rem;
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           SERVICES SECTION
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .service-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: border-color 0.4s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2.5l3 3-3 3zM40 20.5V18H20v-2h20v-2.5l3 3-3 3z' fill='%236B7C3F' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 0;
+        }
+
+        .service-card:hover {
+            border-color: rgba(163, 181, 106, 0.5);
+            box-shadow: 0 10px 40px rgba(10, 15, 30, 0.8),
+                inset 0 0 20px rgba(139, 158, 80, 0.1);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            transition: transform 0.3s, filter 0.3s;
+            transform: translateZ(30px);
+            /* 3D effect */
+        }
+
+        .service-card:hover .service-icon {
+            transform: translateZ(40px) scale(1.1);
+            filter: drop-shadow(0 0 15px var(--olive-light));
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            transform: translateZ(20px);
+        }
+
+        .service-card p {
+            color: #b0b5c0;
+            position: relative;
+            z-index: 1;
+            transform: translateZ(10px);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           STATS BAR
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .stats-section {
+            background: var(--navy-light);
+            padding: 4rem 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-number span {
+            color: var(--olive-light);
+            margin-left: 2px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #b0b5c0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .stat-label::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: var(--olive);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           CONTACT SECTION
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .contact-left {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-left h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-left>p {
+            color: #b0b5c0;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glowing pulse effect for contact cards */
+        .info-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: inset 0 0 20px rgba(139, 158, 80, 0);
+            transition: box-shadow 0.3s ease;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .info-card:hover {
+            border-color: var(--olive);
+            transform: translateX(10px);
+        }
+
+        .info-card:hover::after {
+            box-shadow: inset 0 0 20px rgba(139, 158, 80, 0.15);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(139, 158, 80, 0.1);
+            color: var(--olive-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .info-card:hover .info-icon {
+            background: var(--olive);
+            color: var(--navy);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 15px rgba(139, 158, 80, 0.5);
+        }
+
+        .info-content h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .info-content p {
+            color: #b0b5c0;
+            font-size: 0.95rem;
+        }
+
+        .contact-right {
+            flex: 1.5;
+            min-width: 350px;
+        }
+
+        .contact-form {
+            background: rgba(18, 26, 47, 0.5);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .form-control {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 0;
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-bottom-color: var(--olive-light);
+            box-shadow: 0 1px 0 0 var(--olive-light);
+        }
+
+        .form-control::placeholder {
+            color: transparent;
+            /* Used for floating label */
+        }
+
+        .form-label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            color: #b0b5c0;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .form-control:focus~.form-label,
+        .form-control:not(:placeholder-shown)~.form-label {
+            top: -20px;
+            font-size: 0.8rem;
+            color: var(--olive-light);
+        }
+
+        select.form-control {
+            color: #b0b5c0;
+        }
+
+        select.form-control option {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        select.form-control:focus,
+        select.form-control:valid {
+            color: var(--white);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--olive-dark);
+            border: 1px solid var(--olive);
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--olive-light);
+            z-index: -1;
+            transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .submit-btn:hover {
+            color: var(--navy);
+            box-shadow: 0 0 20px rgba(139, 158, 80, 0.4);
+        }
+
+        .submit-btn:hover::before {
+            top: 0;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           FOOTER
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        footer {
+            background: var(--navy);
+            border-top: 2px solid var(--olive-dark);
+            padding: 4rem 5% 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p {
+            color: #b0b5c0;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #b0b5c0;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--olive-light);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #777;
+            font-size: 0.9rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           RESPONSIVE DESIGN
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        @media (max-width: 968px) {
+            .hero-left h1 {
+                font-size: 2.5rem;
+            }
+
+            .typewriter-container {
+                font-size: 1.2rem;
+            }
+
+            .hologram-container {
+                height: 300px;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: -100vh;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 15, 30, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: 0.5s;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                top: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+            }
+
+            .hamburger {
+                display: flex;
+                cursor: pointer;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            section {
+                padding: 3rem 5%;
+                overflow-x: hidden;
+            }
+
+            .marquee-item {
+                font-size: 0.9rem;
+                margin: 0 1rem;
+            }
+
+            .marquee-item::after {
+                margin-left: 2rem;
+            }
+
+            /* HERO - Stacked but graphic aligned right */
+            .hero-content {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                gap: 2rem;
+                margin-top: 5rem;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .hero-left {
+                width: 100%;
+            }
+
+            .hero-right {
+                align-self: flex-end;
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .cta-group {
+                justify-content: flex-start;
+                width: 100%;
+            }
+
+            .hologram-container {
+                height: 250px;
+                max-width: 250px;
+                margin: 0;
+            }
+
+            .hologram-screen {
+                height: 150px;
+                padding: 1rem;
+            }
+
+            /* SERVICES - Stacked natively */
+            .services-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+                width: 100%;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            /* CONTACT - Stacked natively */
+            .contact-container {
+                flex-direction: column !important;
+                gap: 2rem;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .contact-right {
+                width: 100%;
+            }
+
+            .contact-left {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-left h1 {
+                font-size: 1.8rem;
+            }
+
+            .typewriter-container {
+                font-size: 1rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .cta-group .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hologram-container {
+                height: 180px;
+                max-width: 180px;
+            }
+
+            .hologram-screen {
+                height: 120px;
+            }
+
+            .code-content {
+                font-size: 0.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            /* STATS - Single line scaled heavily to fit */
+            .stats-grid {
+                flex-wrap: nowrap;
+                gap: 0;
+                padding: 0;
+                justify-content: space-between;
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            .stat-number {
+                font-size: 1.1rem;
+            }
+
+            .stat-label {
+                font-size: 0.45rem;
+                letter-spacing: 0;
+            }
+
+            .stat-label::after {
+                width: 10px;
+                bottom: -3px;
+            }
+
+            .stat-item {
+                padding: 0 0.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="spinner-ring"></div>
+        <h2>NEXTGENTECH</h2>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="logo">NextgenTech<span class="dot">.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home" class="hover-target">Home</a></li>
+            <li><a href="#services" class="hover-target">Services</a></li>
+            <li><a href="#stats" class="hover-target">About</a></li>
+            <li><a href="#contact" class="hover-target">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-left fade-up">
+                <h1>Building Tomorrow's Digital World</h1>
+                <div class="typewriter-container">
+                    <span id="typewriter"></span><span class="cursor"></span>
+                </div>
+                <div class="cta-group">
+                    <a href="#services" class="btn btn-primary hover-target">Explore Services</a>
+                    <a href="#contact" class="btn btn-outline hover-target">Get in Touch</a>
+                </div>
+            </div>
+
+            <div class="hero-right fade-up" style="transition-delay: 0.2s;">
+                <div class="hologram-container">
+                    <div class="hologram-screen">
+                        <div class="screen-header">
+                            <div class="screen-dot"></div>
+                            <div class="screen-dot"></div>
+                            <div class="screen-dot"></div>
+                        </div>
+                        <div class="code-scroll">
+                            <div class="code-content">
+                                <div class="code-line"><span class="c-keyword">import</span> { AIEngine } <span
+                                        class="c-keyword">from</span> <span class="c-string">'nextgen/core'</span>;
+                                </div>
+                                <div class="code-line"><span class="c-keyword">const</span> system = <span
+                                        class="c-keyword">new</span> <span class="c-func">AIEngine</span>();</div>
+                                <div class="code-line c-comment">// Initializing neural net...</div>
+                                <div class="code-line">system.<span class="c-func">connect</span>({ <span
+                                        class="c-keyword">secure</span>: <span class="c-keyword">true</span> });</div>
+                                <div class="code-line"><span class="c-keyword">await</span> system.<span
+                                        class="c-func">trainModel</span>(data);</div>
+                                <div class="code-line">console.<span class="c-func">log</span>(<span
+                                        class="c-string">"Optimization: 100%"</span>);</div>
+                                <div class="code-line"><span class="c-keyword">export default</span> system.build();
+                                </div>
+                                <br>
+                                <div class="code-line"><span class="c-keyword">import</span> { AppServer } <span
+                                        class="c-keyword">from</span> <span class="c-string">'nextgen/web'</span>;</div>
+                                <div class="code-line"><span class="c-keyword">const</span> server = <span
+                                        class="c-keyword">new</span> <span class="c-func">AppServer</span>();</div>
+                                <div class="code-line c-comment">// Compiling web assets...</div>
+                                <div class="code-line">server.<span class="c-func">deployToEdge</span>();</div>
+                                <div class="code-line">console.<span class="c-func">log</span>(<span
+                                        class="c-string">"Project live."</span>);</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hologram-base"></div>
+                    <!-- Particles -->
+                    <div class="particles">
+                        <div class="particle" style="left: 20%; animation-duration: 3s; animation-delay: 0s;"></div>
+                        <div class="particle" style="left: 50%; animation-duration: 4s; animation-delay: 1s;"></div>
+                        <div class="particle" style="left: 80%; animation-duration: 3.5s; animation-delay: 0.5s;"></div>
+                        <div class="particle" style="left: 35%; animation-duration: 4.5s; animation-delay: 1.5s;"></div>
+                        <div class="particle" style="left: 65%; animation-duration: 3.2s; animation-delay: 0.8s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE SECTION -->
+    <div class="marquee-section fade-up">
+        <div class="marquee-content">
+            <!-- Set 1 -->
+            <div class="marquee-item">Website Development</div>
+            <div class="marquee-item">Mobile Apps</div>
+            <div class="marquee-item">Data Analysis</div>
+            <div class="marquee-item">UI/UX Design</div>
+            <!-- Set 2 -->
+            <div class="marquee-item">Website Development</div>
+            <div class="marquee-item">Mobile Apps</div>
+            <div class="marquee-item">Data Analysis</div>
+            <div class="marquee-item">UI/UX Design</div>
+        </div>
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <section id="services">
+        <h2 class="section-title fade-up">What We Build</h2>
+        <div class="services-grid">
+            <div class="service-card tilt-card fade-up hover-target" data-delay="0.1s">
+                <div class="service-icon">🌐</div>
+                <h3>Website Development</h3>
+                <p>Stunning, fast, responsive web experiences tailored to your brand identity. We build sites that
+                    convert.</p>
+            </div>
+            <div class="service-card tilt-card fade-up hover-target" data-delay="0.2s">
+                <div class="service-icon">📱</div>
+                <h3>Mobile Apps</h3>
+                <p>Cross-platform apps that users love. Seamless experiences across iOS and Android devices.</p>
+            </div>
+            <div class="service-card tilt-card fade-up hover-target" data-delay="0.3s">
+                <div class="service-icon">🤖</div>
+                <h3>ML Projects</h3>
+                <p>Intelligent systems that learn and adapt. Leverage AI to automate processes and predict trends.</p>
+            </div>
+            <div class="service-card tilt-card fade-up hover-target" data-delay="0.4s">
+                <div class="service-icon">📊</div>
+                <h3>Data Analysis</h3>
+                <p>Turning raw data into powerful, actionable insights with interactive visualization dashboards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section id="stats" class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item fade-up">
+                <div class="stat-number"><span class="counter" data-target="50">0</span><span>+</span></div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-item fade-up" style="transition-delay: 0.1s;">
+                <div class="stat-number"><span class="counter" data-target="30">0</span><span>+</span></div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item fade-up" style="transition-delay: 0.2s;">
+                <div class="stat-number"><span class="counter" data-target="4">0</span></div>
+                <div class="stat-label">Core Services</div>
+            </div>
+            <div class="stat-item fade-up" style="transition-delay: 0.3s;">
+                <div class="stat-number"><span class="counter" data-target="2">0</span></div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2 class="section-title fade-up">Let's Connect</h2>
+        <div class="contact-container">
+            <div class="contact-left fade-up">
+                <h2>Ready to start your project?</h2>
+                <p>Reach out to us to discuss how we can help bring your vision to reality with cutting-edge technology.
+                </p>
+
+                <div class="info-card hover-target">
+                    <div class="info-icon">📧</div>
+                    <div class="info-content">
+                        <h4>Email Us</h4>
+                        <p>nextgentechsolutions01@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="info-card hover-target">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h4>Call Us</h4>
+                        <p>9342817775 / 8928415599</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-right fade-up" style="transition-delay: 0.2s;">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="user_name" class="form-control hover-target"
+                            placeholder="Name" required>
+                        <label for="name" class="form-label">Full Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="user_email" class="form-control hover-target"
+                            placeholder="Email" required>
+                        <label for="email" class="form-label">Email Address</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" name="service" class="form-control hover-target" required>
+                            <option value="" disabled selected>Select Service...</option>
+                            <option value="web">Website Development</option>
+                            <option value="app">Mobile Apps</option>
+                            <option value="ml">ML Projects</option>
+                            <option value="data">Data Analysis</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" class="form-control hover-target" rows="4"
+                            placeholder="Message" required></textarea>
+                        <label for="message" class="form-label">Project Details</label>
+                    </div>
+                    <button type="submit" class="submit-btn hover-target" id="submitBtn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col" style="grid-column: span 2;">
+                <h3><span class="logo">NextgenTech<span style="color:var(--olive-light)">.</span></span></h3>
+                <p>Code. Create. Innovate.</p>
+                <p>Building tomorrow's digital experiences with cutting-edge tech. Based in the physical world, living
+                    in the digital realm.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home" class="hover-target">Home</a></li>
+                    <li><a href="#services" class="hover-target">Services</a></li>
+                    <li><a href="#contact" class="hover-target">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Info</h3>
+                <ul class="footer-links" style="list-style: none;">
+                    <li>nextgentechsolutions01@gmail.com</li>
+                    <li>9342817775</li>
+                    <li>8928415599</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NextgenTech Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // IMPORTANT: Replace "YOUR_PUBLIC_KEY" with your actual EmailJS Public Key
+            emailjs.init("7ePA1w-hPlozclXbS");
+        })();
+    </script>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Use strict boundaries
+        'use strict';
+
+        // Form Submit Animation with EmailJS interaction
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+
+            // UI state: Sending...
+            btn.innerText = "Sending Message...";
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+            btn.style.backgroundColor = 'transparent';
+
+            // IMPORTANT: Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs from EmailJS
+            emailjs.sendForm('service_q20wynl', 'template_enmsx55', this)
+                .then(() => {
+                    // Success UI
+                    btn.style.opacity = '1';
+                    btn.style.backgroundColor = 'var(--olive)';
+                    btn.style.color = 'var(--navy)';
+                    btn.innerText = "Message Sent Successfully!";
+                    btn.style.borderColor = 'var(--olive)';
+
+                    this.reset(); // Clear the form fields
+
+                    setTimeout(() => {
+                        // Reset button back to normal state
+                        btn.style.backgroundColor = 'var(--olive-dark)';
+                        btn.style.color = 'var(--white)';
+                        btn.innerText = originalText;
+                        btn.style.pointerEvents = 'auto';
+                        btn.style.borderColor = 'var(--olive)';
+                    }, 4000);
+                }, (error) => {
+                    // Error UI
+                    console.error('FAILED...', error);
+                    btn.style.opacity = '1';
+                    btn.style.backgroundColor = '#ff5f56';
+                    btn.style.color = 'white';
+                    btn.style.borderColor = '#ff5f56';
+                    btn.innerText = "Error: Failed to send.";
+
+                    setTimeout(() => {
+                        // Reset button back to normal state
+                        btn.style.backgroundColor = 'var(--olive-dark)';
+                        btn.style.color = 'var(--white)';
+                        btn.style.borderColor = 'var(--olive)';
+                        btn.innerText = originalText;
+                        btn.style.pointerEvents = 'auto';
+                    }, 4000);
+                });
+        });
+
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.visibility = 'hidden';
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 2000);
+        });
+
+        // Navbar Scroll Effect & Progress Bar
+        const navbar = document.getElementById('navbar');
+        const progressBar = document.getElementById('progressBar');
+
+        window.addEventListener('scroll', () => {
+            // Navbar blur
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+
+            // Progress bar
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        }, { passive: true });
+
+        // Mobile Menu Logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Typewriter Effect
+        const words = ["Websites", "Mobile Apps", "ML Projects", "Data Analysis"];
+        let wordIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriter');
+
+        function type() {
+            if (!typewriterEl) return;
+            const currentWord = words[wordIdx];
+
+            if (isDeleting) {
+                typewriterEl.textContent = currentWord.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typewriterEl.textContent = currentWord.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIdx === currentWord.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                wordIdx = (wordIdx + 1) % words.length;
+                typeSpeed = 500; // Pause before next word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start typing after preloader
+        setTimeout(type, 2500);
+
+        // Intersection Observer for Scroll Animations & Stats Counter
+        const fadeUpElems = document.querySelectorAll('.fade-up');
+        const counters = document.querySelectorAll('.counter');
+        let hasCounted = false;
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.getAttribute('data-delay');
+                    if (delay) entry.target.style.transitionDelay = delay;
+
+                    entry.target.classList.add('visible');
+
+                    if (entry.target.classList.contains('stat-item') && !hasCounted) {
+                        hasCounted = true;
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const duration = 2000; // ms
+                            const increment = target / (duration / 16); // ~60fps
+                            let current = 0;
+
+                            const updateCounter = () => {
+                                current += increment;
+                                if (current < target) {
+                                    counter.innerText = Math.ceil(current);
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.innerText = target;
+                                }
+                            };
+                            updateCounter();
+                        });
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        fadeUpElems.forEach(elem => observer.observe(elem));
+
+        // 3D Tilt Effect for Service Cards
+        if (!isTouchDevice) {
+            const tiltCards = document.querySelectorAll('.tilt-card');
+
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = ((y - centerY) / centerY) * -10;
+                    const rotateY = ((x - centerX) / centerX) * 10;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+                    card.style.transition = 'transform 0.5s ease';
+                });
+
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'none';
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
